@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+  scroll-margin-top: 74px;
+}
+
+/* HERO BACKGROUND */
+
+.hero-bg {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  animation: laptopBgMove 45s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes laptopBgMove {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* MOBILE MENU ANIMATION */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease-in-out;
+}
+
+/* PREMIUM OFFER ALERT */
+
+.blink-offer {
+  position: relative;
+  overflow: hidden;
+  animation: premiumAlert 3s ease-in-out infinite;
+  box-shadow: 0 10px 35px rgba(255, 217, 0, 0.45);
+}
+
+.blink-offer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: skewX(-25deg);
+  animation: shineMove 4s linear infinite;
+}
+
+@keyframes premiumAlert {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shineMove {
+  0% {
+    left: -120%;
+  }
+
+  100% {
+    left: 140%;
+  }
+}
+
+/* PREMIUM BUTTON EFFECT */
+
+.premium-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease,
+    color 0.35s ease;
+  touch-action: manipulation;
+}
+
+.premium-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 35px rgba(255, 217, 0, 0.35);
+}
+
+.premium-btn:active {
+  transform: scale(0.94);
+}
+
+.premium-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 65%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: skewX(-25deg);
+  transition: 0.55s;
+}
+
+.premium-btn:hover::before,
+.premium-btn:active::before {
+  left: 140%;
+}
+
+/* PREMIUM CARD EFFECT */
+
+.hover-card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background-color 0.4s ease;
+  touch-action: manipulation;
+}
+
+.hover-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(255, 0, 0, 0.32);
+}
+
+.hover-card:active {
+  transform: scale(0.96);
+}
+
+/* CELLPHONE SMOOTH TOUCH EFFECT */
+
+@media (max-width: 768px) {
+  a,
+  button,
+  .hover-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:active,
+  button:active {
+    transform: scale(0.95);
+  }
+
+  .premium-btn:hover,
+  .premium-btn:active {
+    transform: scale(1.04);
+    box-shadow: 0 12px 30px rgba(255, 217, 0, 0.45);
+  }
+
+  .hover-card:hover,
+  .hover-card:active {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 18px 38px rgba(255, 0, 0, 0.35);
+  }
+
+  .hero-bg {
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    animation: phoneBgZoom 35s ease-in-out infinite !important;
+  }
+
+  @keyframes phoneBgZoom {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.12);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-bg {
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    animation: phoneBgZoomSmall 34s ease-in-out infinite !important;
+  }
+
+  @keyframes phoneBgZoomSmall {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.14);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+/* CELLPHONE PREMIUM HOVER */
+
+@media (max-width: 768px) {
+
+  .hover-card {
+    transition:
+      transform 0.45s ease,
+      box-shadow 0.45s ease,
+      background-color 0.45s ease;
+  }
+
+  .hover-card:hover,
+  .hover-card:active {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 22px 50px rgba(255, 0, 0, 0.45);
+  }
+
+  .hover-card img {
+    transition: transform 0.7s ease;
+  }
+
+  .hover-card:hover img,
+  .hover-card:active img {
+    transform: scale(1.08);
+  }
+
+  .premium-btn {
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      background-color 0.35s ease;
+  }
+
+  .premium-btn:hover,
+  .premium-btn:active {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 217, 0, 0.45);
+  }
+}
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .hover-card,
+  .premium-btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hover-card:active {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 22px 50px rgba(255, 0, 0, 0.45);
+  }
+
+  .premium-btn:active {
+    transform: scale(0.95);
+  }
+}
+/* REAL RESTAURANT MODAL SMOOTH DESIGN */
+
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .premium-btn,
+  .hover-card,
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .premium-btn:active,
+  button:active,
+  a:active {
+    transform: scale(0.96);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dc2626;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
